@@ -1,0 +1,235 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #f4ecdb;
+  --color-cream: #fbf6ea;
+  --color-parchment: #eaddc2;
+  --color-parchment-deep: #dccba6;
+  --color-ink: #2e2115;
+  --color-ink-soft: #5a4632;
+  --color-charcoal: #201812;
+  --color-crimson: #9e1b1b;
+  --color-crimson-deep: #7c1215;
+  --color-marigold: #e8a20c;
+  --color-marigold-light: #f6c34c;
+  --color-indigo: #232d4f;
+  --color-indigo-deep: #1a2140;
+  --color-emerald: #0e5c43;
+  --color-emerald-deep: #0a4430;
+  --color-terracotta: #bf5428;
+  --color-terracotta-deep: #9c421d;
+  --color-rose: #d98e7e;
+  --color-rose-soft: #e9bcae;
+  --color-blush: #eecbd6;
+  --color-blush-deep: #dca8ba;
+  --color-rosewood: #841e2d;
+  --color-cocoa: #f3e6d2;
+  --color-brownie: #6b4423;
+  --color-brownie-deep: #3e2312;
+  --color-caramel: #c98d4b;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-schibsted);
+
+  --tracking-poster: 0.14em;
+  --tracking-label: 0.28em;
+
+  --shadow-stamp:
+    0 1px 0 rgba(46, 33, 21, 0.9), 0 2px 0 rgba(46, 33, 21, 0.9),
+    0 3px 0 rgba(46, 33, 21, 0.9), 0 4px 0 rgba(46, 33, 21, 0.9);
+  --shadow-poster:
+    0 2px 0 rgba(46, 33, 21, 0.25), 0 16px 40px -12px rgba(46, 33, 21, 0.35);
+  --shadow-card: 0 10px 30px -10px rgba(46, 33, 21, 0.3);
+
+  --radius-lotus: 12px 20px 12px 20px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px dashed var(--color-crimson);
+  outline-offset: 3px;
+}
+
+/* ---------- editorial helpers ---------- */
+
+.font-display-italic {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* halftone dot paper texture */
+.texture-halftone {
+  background-image: radial-gradient(
+    rgba(46, 33, 21, 0.12) 1px,
+    transparent 1.3px
+  );
+  background-size: 7px 7px;
+}
+
+/* cotton-textile diagonal weave */
+.texture-weave {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(46, 33, 21, 0.05) 0 2px,
+    transparent 2px 8px
+  );
+}
+
+/* letterpress print grain */
+.texture-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* vertical screen-print bands */
+.texture-bands {
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(46, 33, 21, 0.055) 0 2px,
+    transparent 2px 5px
+  );
+}
+
+/* roughened paper edge via mask */
+.edge-ink {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.012 0.018' numOctaves='2' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='14'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
+  mask-size: 200px 200px;
+}
+
+/* ink bleed shadow under letterpress */
+.bleed {
+  text-shadow: 1px 1px 0 rgba(46, 33, 21, 0.14);
+}
+
+/* hand-painted signboard line */
+.hand-line {
+  border-image: repeating-linear-gradient(
+    90deg,
+    currentColor 0 10px,
+    transparent 10px 16px
+  );
+  border-image-slice: 1;
+}
+
+/* hard shadow lift used on cards/buttons */
+.shadow-stamp {
+  box-shadow: var(--shadow-stamp);
+}
+.shadow-poster {
+  box-shadow: var(--shadow-poster);
+}
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-stamp:hover {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 rgba(46, 33, 21, 0.9),
+    0 2px 0 rgba(46, 33, 21, 0.9);
+}
+
+/* ---------- reveal primitives (GSAP) ---------- */
+
+.reveal-mask {
+  display: block;
+}
+
+.reveal-mask-inner {
+  display: block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mask-inner {
+    transform: none;
+  }
+  .reveal-fade {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- marquee ---------- */
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ---------- cursor ---------- */
+
+@media (pointer: fine) {
+  body.has-cursor {
+    cursor: none;
+  }
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor [role='button'] {
+    cursor: none;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .texture-grain,
+  .texture-halftone,
+  .texture-weave,
+  .texture-bands {
+    background-image: none;
+  }
+}
