@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Play, X } from 'lucide-react'
 import type { Gallery } from '@/lib/content'
 import type { GalleryGroup } from '@/lib/galleries-data'
 import { cn } from '@/lib/utils'
+import { getYouTubeId, YouTubeEmbed } from '@/components/ui/youtube-embed'
 
 function basename(src: string | undefined) {
   if (!src) return ''
@@ -26,14 +27,23 @@ function VideoTile({
 }) {
   const [paused, setPaused] = useState(true)
 
+  if (getYouTubeId(src)) {
+    return (
+      <div className={cn('group/vt relative bg-ink/10', className)}>
+        <YouTubeEmbed src={src} className={cn('h-full w-full object-cover', className)} />
+      </div>
+    )
+  }
+
   return (
     <div className={cn('group/vt relative bg-ink/10', className)}>
       <video
         src={src}
-        className={cn('h-full w-full object-cover', className)}
+        className={cn('h-full w-full', className)}
         preload="metadata"
         playsInline
         controls
+        style={{ objectFit: 'contain' }}
         onPlay={() => setPaused(false)}
         onPause={() => setPaused(true)}
       />
@@ -287,6 +297,12 @@ export function GalleryModal({
                     quality={90}
                   />
                 </div>
+              ) : getYouTubeId(active.src) ? (
+                <YouTubeEmbed
+                  src={active.src}
+                  autoPlay
+                  className="aspect-video h-full w-full max-h-[78vh] object-contain"
+                />
               ) : (
                 <video
                   src={active.src}

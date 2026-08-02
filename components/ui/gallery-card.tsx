@@ -4,6 +4,7 @@ import Image from 'next/image'
 import type { Gallery } from '@/lib/content'
 import { cn } from '@/lib/utils'
 import { Corner, Paisley } from '@/components/ui/motifs'
+import { getYouTubeId } from '@/components/ui/youtube-embed'
 
 function PreviewFrame({ gallery }: { gallery: Gallery }) {
   const [c1, c2] = gallery.palette
@@ -15,13 +16,24 @@ function PreviewFrame({ gallery }: { gallery: Gallery }) {
       style={{ background: `linear-gradient(160deg, ${c1} 0%, ${c2} 100%)` }}
     >
       {gallery.preview.type === 'video' ? (
-        <video
-          src={gallery.preview.src}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          preload="metadata"
-          playsInline
-          aria-hidden="true"
-        />
+        getYouTubeId(gallery.preview.src) ? (
+          <Image
+            src={`https://i.ytimg.com/vi/${getYouTubeId(gallery.preview.src)}/hqdefault.jpg`}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            quality={82}
+          />
+        ) : (
+          <video
+            src={gallery.preview.src}
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            preload="metadata"
+            playsInline
+            aria-hidden="true"
+          />
+        )
       ) : (
         <Image
           src={gallery.preview.src}
