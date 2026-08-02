@@ -17,18 +17,24 @@ export function Contact() {
   const scope = useRef<HTMLElement>(null)
   useReveal()
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    const subject = encodeURIComponent(
-      `New project enquiry — ${data.get('name') || 'friend'}`,
-    )
-    const body = encodeURIComponent(
-      `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`,
-    )
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`
-    setSent(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(e.currentTarget),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Something went wrong')
+      }
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    }
   }
 
   return (
@@ -172,15 +178,15 @@ export function Contact() {
                         transition={{ duration: 0.45, ease: 'easeOut' }}
                       >
                         <p className="font-body leading-relaxed text-ink-soft">
-                          Your mail client should have opened with the letter
-                          pre-addressed. If not, write to{' '}
+                          Your letter is on its way — I reply within a day. Or
+                          write to{' '}
                           <a
                             href={`mailto:${contact.email}`}
                             className="font-semibold text-crimson underline underline-offset-4"
                           >
                             {contact.email}
                           </a>{' '}
-                          directly — I reply within a day.
+                          directly.
                         </p>
                       </motion.div>
                     ) : (
@@ -253,6 +259,11 @@ export function Contact() {
                             {contact.formPlaceholders.send}
                           </Button>
                         </div>
+                        {error && (
+                          <p className="font-body text-sm font-semibold text-crimson" role="alert">
+                            {error}
+                          </p>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
