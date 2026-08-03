@@ -27,9 +27,9 @@ export const navLinks = [
 export const hero = {
   kicker: 'Anirudh * Tech Nerd * New Delhi',
   headlineLines: ['Designing', 'Collectibles', 'of Delhi'],
-  sub: 'Event identities, poster systems, social campaigns and video edits — designed between fests, productions and deadlines.',
-  ctaPrimary: { label: 'See the Works', href: '#works' },
-  ctaSecondary: { label: 'Say Hello', href: '#contact' },
+  sub: 'Event identities, poster systems, campaign reels and merch — designed on a system, shipped on a deadline, from first sketch to final print and post.',
+  ctaPrimary: { label: 'Start a Project', href: '#contact' },
+  ctaSecondary: { label: 'Explore Our Work', href: '#works' },
   portrait: {
     src: 'https://res.cloudinary.com/xbmycklp/image/upload/v1785512406/images/header-removebg-preview.png',
     alt: 'Anirudh Rajora — header portrait',
@@ -43,7 +43,7 @@ export const hero = {
 }
 
 export const about = {
-  kicker: '01 · About',
+  kicker: '02 · About',
   title: 'Designing between lecture halls and rehearsal rooms.',
   body: [
     'I am a B.Com (Hons.) student at PGDAV College, University of Delhi, and the Tech Head of Rudra — The Street Play Society. My design practice grew from a need: how do we make a college society feel like a professional cultural brand? The answer lived between the streets of Old Delhi — hand-painted signboards, Bollywood posters, matchbox labels, railway typography — and the deadlines of a student society.',
@@ -151,6 +151,7 @@ export const galleries: Gallery[] = [
 
 export type CaseStudy = {
   id: string
+  slug: string
   index: string
   title: string
   subtitle: string
@@ -159,6 +160,14 @@ export type CaseStudy = {
   duration: string
   theme: 'dark' | 'blush' | 'brownie'
   story: string
+  client: string
+  industry: string
+  challenge: string[]
+  approach: string[]
+  process: { title: string; body: string }[]
+  features: { title: string; body: string }[]
+  stack: string[]
+  lessons: string[]
   metrics: { value: string; label: string }[]
   palette: string[]
   image: string
@@ -169,6 +178,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     id: 'dav-rohini-mun',
+    slug: 'dav-rohini-mun',
     index: 'CASE 01',
     title: 'DAV Rohini MUN',
     subtitle: 'One conference, one system: 150+ assets that all speak one language.',
@@ -178,6 +188,51 @@ export const caseStudies: CaseStudy[] = [
     theme: 'dark',
     story:
       'As the IT and Social Media Head for DAV Rohini MUN, I spearheaded the complete digital campaign and collateral ecosystem. From conceptualizing critical certificates, placards, and brochures to managing high-stakes social media outreach, I navigated tight deadlines and technical hurdles head-on. By maintaining absolute precision under pressure, I transformed creative chaos into a seamless, professional conference experience that empowered delegates and amplified our institutional reach.',
+    client: 'DAV Rohini MUN',
+    industry: 'Conference · Model United Nations',
+    challenge: [
+      'A conference needed a complete visual identity — brochures, placards, certificates, secretariat materials — with no existing design system to start from.',
+      'Five committees had to live under one identity while still feeling distinct from each other.',
+      'Six weeks to take a blank page to a printed, distributed conference — every delay hit a real date.',
+    ],
+    approach: [
+      'Locked a single system first — palette, type, and grid — so every asset inherits the same language regardless of who touches it or when.',
+      'Translated the master system committee by committee, keeping each sub-identity legible from the back of the auditorium.',
+      'Ran the social campaign in parallel on the same visual system, so the conference felt like a brand before it started.',
+    ],
+    process: [
+      {
+        title: 'Systems first',
+        body: 'Palette, type, and grid locked before any asset shipped — the grid is what made speed safe.',
+      },
+      {
+        title: 'Asset pipeline',
+        body: 'Placards, certificates, and the 12-page brochure produced against shared templates, committee by committee.',
+      },
+      {
+        title: 'Parallel campaign',
+        body: 'Countdowns, committee reveals, and delegate-facing posts on the same system — the feed and the hall matched.',
+      },
+    ],
+    features: [
+      {
+        title: 'One system, 150+ assets',
+        body: 'The master grid and palette stretched across every deliverable without a single redo from inconsistency.',
+      },
+      {
+        title: 'Five committees, one family',
+        body: 'Each committee got a sub-identity that still read unmistakably as the same conference.',
+      },
+      {
+        title: 'Precision under deadline',
+        body: 'Six weeks from concept to printed collateral — the system absorbed the pressure, not the people.',
+      },
+    ],
+    stack: ['Illustrator', 'Photoshop'],
+    lessons: [
+      'A system beats inspiration: once the grid and palette were locked, speed never cost consistency.',
+      'Print checks the designer harder than the screen — twenty feet of auditorium is a different test than twenty inches of phone.',
+    ],
     metrics: [
       { value: '150+', label: 'Placards' },
       { value: '12', label: 'Brochure pages' },
@@ -195,6 +250,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'event-special-highlights-shor',
+    slug: 'event-special-highlights-shor',
     index: 'CASE 02',
     title: 'Event Special Highlights - Shor',
     subtitle: 'Forty-two frames, one showreel, and a production that earned its spotlights.',
@@ -204,6 +260,51 @@ export const caseStudies: CaseStudy[] = [
     theme: 'blush',
     story:
       'Managing over 50 dynamic teams as the Tech Head for "Shor" demanded relentless energy and precision. I directed the entire social media campaign and produced high-retention promotional reels that drove massive digital engagement. Balancing multi-channel production schedules, technical troubleshooting, and team coordination taught me how to thrive in fast-paced environments, turning intense creative pressure into an unforgettable showcase of street theatre culture.',
+    client: 'Rudra — The Street Play Society',
+    industry: 'College festival · Street theatre',
+    challenge: [
+      'Fifty-plus teams, one festival weekend, and one feed that had to make people actually show up.',
+      'Promotional reels had to hold attention in a crowded feed while the production itself was still being built.',
+      'Capture across multiple venues with no dedicated crew — the campaign had to be scheduled like a production.',
+    ],
+    approach: [
+      'Ran the campaign as one content system: frame style, caption voice, and reel formats locked before the week began.',
+      'Cut reels to the rhythm of street theatre — quick cuts, bold type, audio that lands in the first frame.',
+      'Handled scheduling and troubleshooting live: from capture to upload in the same day, across channels.',
+    ],
+    process: [
+      {
+        title: 'Content plan',
+        body: 'A 40+ frame set designed as a campaign, not a random gallery — every post had a job.',
+      },
+      {
+        title: 'Capture & cut',
+        body: 'Multi-venue capture folded into a production schedule, cut into high-retention reels.',
+      },
+      {
+        title: 'Live operations',
+        body: 'Technical troubleshooting and team coordination in real time, with the feed as the deadline.',
+      },
+    ],
+    features: [
+      {
+        title: '40+ frame campaign set',
+        body: 'One consistent look across the entire festival week — the feed read as a single production.',
+      },
+      {
+        title: 'A showreel that carried the story',
+        body: 'The festival\u2019s narrative compressed into one cut that kept rewatches on the society page.',
+      },
+      {
+        title: '1st / 3rd fest placements',
+        body: 'The campaign ran in the same week as the production — and the results backed the craft.',
+      },
+    ],
+    stack: ['Premiere Pro', 'After Effects', 'Photoshop', 'Instagram'],
+    lessons: [
+      'A planned campaign system makes festival-pressure execution mechanical instead of creative — that is the point.',
+      'A reel is a poster plus motion: the first frame does the stopping, the edit does the keeping.',
+    ],
     metrics: [
       { value: '40+', label: 'Frames in the set' },
       { value: '01', label: 'Showreel' },
@@ -225,6 +326,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'rudra-merch',
+    slug: 'rudra-merch',
     index: 'CASE 03',
     title: 'Brand Identity- Merchandise Design',
     subtitle: 'Finding the tee the whole society actually wants to wear.',
@@ -234,6 +336,51 @@ export const caseStudies: CaseStudy[] = [
     theme: 'brownie',
     story:
       'Working as an independent freelance designer for brand merchandise required complete ownership from concept to final production. I translated complex client visions into striking, market-ready apparel collections under strict commercial deadlines. By balancing creative storytelling with practical streetwear logic, I delivered distinctive brand identities that resonated deeply with audiences while proving my adaptability as an autonomous designer.',
+    client: 'Rudra — The Street Play Society',
+    industry: 'Society merchandise · Apparel',
+    challenge: [
+      'A society tee that members would actually wear — not a poster design printed onto cotton.',
+      'The client vision had to survive print reality: three colours, real fabric, real cost.',
+      'Full ownership with no art director above — concept, iteration, and production coordination were all mine.',
+    ],
+    approach: [
+      'Started from streetwear logic instead of poster logic — the tee is a walking billboard for the society.',
+      'Iterated in public: fifteen-plus revisions with the team, each round shipping a version tighter than the last.',
+      'Balanced storytelling with commercial deadlines — the design had to sell the society, not just look good.',
+    ],
+    process: [
+      {
+        title: 'Concept',
+        body: 'The \u201cART IS REVOLUTION\u201d flagship born from the society\u2019s street-theatre spirit.',
+      },
+      {
+        title: 'Iteration',
+        body: 'Fifteen-plus rounds with the team — public iteration as the design method.',
+      },
+      {
+        title: 'Production',
+        body: 'Print-ready execution under three-colour constraints, delivered to a commercial deadline.',
+      },
+    ],
+    features: [
+      {
+        title: 'ART IS REVOLUTION flagship',
+        body: 'A design the society actually wears — the true test for merch is the street, not the moodboard.',
+      },
+      {
+        title: '15+ iterations',
+        body: 'Every revision shipped in public and landed closer to the final; none wasted the deadline.',
+      },
+      {
+        title: 'Three print colours',
+        body: 'Creative restraint under real production constraints — the constraint shaped the design.',
+      },
+    ],
+    stack: ['Illustrator', 'Photoshop'],
+    lessons: [
+      'Merch is a product, not a poster: it only works when someone is proud to wear it.',
+      'Autonomy is a skill: full ownership from concept to production means every win — and every mistake — is yours.',
+    ],
     metrics: [
       { value: '50+', label: 'Members served' },
       { value: '15+', label: 'Design iterations' },
@@ -323,7 +470,7 @@ export const education = [
 ]
 
 export const contact = {
-  kicker: '06 · Contact',
+  kicker: '07 · Contact',
   title: 'Have a brief that needs a deadline?',
   body: 'I reply to every message — usually within a day. Tell me what you\'re building.',
   email: 'anirudhrajora2006@gmail.com',

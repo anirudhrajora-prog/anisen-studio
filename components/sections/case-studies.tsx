@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useReveal } from '@/lib/gsap'
 import { caseStudies, type CaseStudy } from '@/lib/content'
 import { SectionHeading } from '@/components/ui/section-heading'
@@ -230,6 +231,18 @@ function CaseArticle({
                   </div>
                 ))}
               </dl>
+              <Link
+                href={`/work/${cs.slug}`}
+                className={cn(
+                  'group mt-6 inline-flex items-center gap-2 border-t-2 pt-5 font-body text-xs font-bold uppercase tracking-poster transition-colors',
+                  index === 0
+                    ? 'border-ink/15 text-crimson hover:text-crimson-deep'
+                    : 'border-ink/15 text-ink hover:text-crimson',
+                )}
+              >
+                Read the full case study
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </figure>
           </Reveal>
         </div>
@@ -329,7 +342,7 @@ export function CaseStudies() {
             <div className="relative mx-auto max-w-7xl px-5 md:px-8">
               {i === 0 ? (
                 <SectionHeading
-                  kicker="03 · Case Studies"
+                  kicker="04 · Case Studies"
                   tone="cream"
                   title={
                     <>

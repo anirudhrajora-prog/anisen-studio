@@ -23,7 +23,7 @@ export function Skills() {
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          kicker="04 · Skills"
+          kicker="05 · Skills"
           title={
             <>
               The toolkit —

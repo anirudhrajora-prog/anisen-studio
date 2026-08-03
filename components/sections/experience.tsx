@@ -23,7 +23,7 @@ export function Experience() {
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          kicker="05 · Experience"
+          kicker="06 · Experience"
           title={
             <>
               The ledger —

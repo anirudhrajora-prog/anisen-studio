@@ -34,7 +34,7 @@ export function Works() {
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          kicker="02 · Selected Works"
+          kicker="03 · Selected Works"
           title={
             <>
               A wall of <span className="font-display-italic text-crimson">collectibles</span> —

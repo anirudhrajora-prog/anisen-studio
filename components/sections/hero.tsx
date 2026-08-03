@@ -7,6 +7,7 @@ import { hero, site } from '@/lib/content'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Marquee } from '@/components/ui/marquee'
+import { BlueprintGrid } from '@/components/ui/blueprint-grid'
 import { Sunburst, Lotus, Seal, Corner } from '@/components/ui/motifs'
 
 export function Hero() {
@@ -68,6 +69,9 @@ export function Hero() {
     >
       <div className="texture-halftone absolute inset-0" aria-hidden="true" />
       <div className="texture-grain absolute inset-0 opacity-60" aria-hidden="true" />
+      <div className="absolute inset-0 opacity-70">
+        <BlueprintGrid />
+      </div>
 
       <Sunburst
         className="hero-orn-sunburst absolute -right-24 top-24 h-72 w-72 text-marigold/25 md:h-96 md:w-96"
